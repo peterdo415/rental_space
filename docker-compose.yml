@@ -1,5 +1,4 @@
 version: '3.9'
-
 services:
   web:
     build: .
@@ -16,13 +15,15 @@ services:
     tty: true
   db:
     image: mysql:5.7.33
+    platform: linux/amd64
     environment:
-      - MYSQL_ROOT_PASSWORD: "mysql"
+      MYSQL_ROOT_PASSWORD: "mysql"
     ports:
-    - 3306:3306
+      - 3306:3306
     volumes:
-      -mysql_data:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
+    command: mysqld --innodb_use_native_aio=0
 
 volumes:
-  - bundle:
-  - mysql_data:
+  bundle:
+  mysql_data:

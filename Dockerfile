@@ -18,10 +18,10 @@ COPY Gemfile.lock ${ROOT}
 COPY package.json ${ROOT}
 COPY yarn.lock ${ROOT}
 RUN gem install bundler
-RUN bundle install --job4
+RUN bundle install --jobs 4
 RUN yarn install
 
-COPY entrypoint.sh /user/bin/
+COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT [ "entrypoint.sh" ]
 EXPOSE 3000
