@@ -1,9 +1,8 @@
 <div class="min-h-screen hero" style="background-image: url(<%= asset_url('hero.jpg') %>);">
-  <div class="bg-opacity-60">
-    <div class="w-full text-center max-w-none">
-      <div class="w-full">
-        <%= render 'shared/search_form' %>
-      </div>
+  <div class="hero-overlay bg-opacity-60"></div>
+  <div class="w-full text-center hero-content max-w-none">
+    <div class="w-full">
+      <%= render 'shared/search_form' %>
     </div>
   </div>
 </div>
