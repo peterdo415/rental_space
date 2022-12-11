@@ -12,4 +12,5 @@
 #  index_features_on_name  (name) UNIQUE
 #
 class Feature < ApplicationRecord
+  validates :name, presence: true
 end
