@@ -20,4 +20,8 @@ class Space < ApplicationRecord
   has_many :features, through: :feature_mappings
 
   validates :name, presence: true
+
+  def main_image
+    images.first || 'http://placehold.jp/300x200.png'
+  end
 end
