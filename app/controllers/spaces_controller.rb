@@ -5,6 +5,10 @@ class SpacesController < ApplicationController
   end
 
   def new
+    @space = Space.new
+  end
+
+  def create
     @space = Space.new(space_params)
     if @space.save
       redirect_to @space, success: '作成しました'
@@ -12,10 +16,6 @@ class SpacesController < ApplicationController
       flash.now[:error] = '失敗しました'
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def create
-    @space = Spaces.new
   end
 
   def edit
@@ -40,6 +40,6 @@ class SpacesController < ApplicationController
 
   def space_params
     params.require(:space).permit(:name, :description, :address, :nearest_station, { space_type_ids: [] },
-                                  { feature_ids: [] }, :longitude, :latitude, { images: []})
+                                  { feature_ids: [] }, :longitude, :latitude, { images: [] })
   end
 end
